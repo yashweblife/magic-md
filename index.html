@@ -5,14 +5,28 @@
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vite + TS</title>
+    <style>
+      .function{
+        color:rgb(255, 78, 78);
+      }
+      .variable{
+        color:rgb(128, 128, 255);
+      }
+      pre{
+        padding:0.5em;
+        color:white;
+        background-color: rgb(30, 30, 30);
+      }
+    </style>
   </head>
-  <body>
-    <div id="test">
+  <pre>
+    <code id="test" class="language-javascript">
       var x = 19;
       function test(v){
         console.log(1);
       }
-    </div>
+    </code>
+  </pre>
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>
