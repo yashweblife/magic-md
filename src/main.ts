@@ -1,3 +1,5 @@
+import { Lexer } from "./Lexer";
+
 function convertMarkdownToHtml(divElement: HTMLElement | Element) {
   // Get the Markdown text from the div
   let markdownText = divElement.textContent!;
@@ -33,15 +35,8 @@ function convertCodeToHTML(el: HTMLElement | Element) {
     .split("\n")
     .map((val: string) => val.trim())
     .join("\n");
-
-  let output = text
-  .replace(/{/gm, "{\n\t")
-  .replace(/function (.+?)/gm, "FUNCT $1")
-  .replace(/\((.+?)\) /gm, "(ARGS $1)")
-  .replace(/console/gm, "CONSOLE")
-  .replace(/(var|let|const)/gm, "VAR")
-  .replace(/}/gm, "\n}");
-  console.log(output);
+  const lex = new Lexer()
+  el.innerHTML = lex.breakdown(text);
 }
 const blocks = document.querySelectorAll("magic-md");
 if (blocks.length > 0) {
@@ -54,3 +49,4 @@ const codes = document.getElementById("test")!;
 if (codes) {
   convertCodeToHTML(codes);
 }
+const code = document.createElement("code")
